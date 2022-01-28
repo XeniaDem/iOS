@@ -13,15 +13,17 @@ final class ViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftMargin:CGFloat = 10
-        let topMargin:CGFloat = 60
-        let mapWidth:CGFloat = view.frame.size.width
-        let mapHeight:CGFloat = view.frame.size.height
-        
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
+
+        mapView.frame = CGRect(x: 10, y: 30, width: view.frame.size.width, height: view.frame.size.height)
         mapView.mapType = MKMapType.standard
         mapView.center = view.center
         view.addSubview(mapView)
+        buttonsStackView.addArrangedSubview(goButton)
+        buttonsStackView.addArrangedSubview(clearButton)
+        view.addSubview(buttonsStackView)
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        buttonsStackView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
         configureUI();
         
     }
@@ -41,5 +43,31 @@ final class ViewController: UIViewController, MKMapViewDelegate {
     
     private func configureUI() {
     }
+    
+    
+    private let goButton: CustomButton = {
+        let button = CustomButton(with: CustomButtonViewModel(title: "Go", backgroundColor: .systemBlue, textColor: .white))
+        button.widthAnchor.constraint(equalToConstant: 130.0).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        button.layer.cornerRadius = 20
+//        button.addTarget(self, action: #selector(goButtonWasPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private let clearButton: CustomButton = {
+        let button = CustomButton(with: CustomButtonViewModel(title: "Clear", backgroundColor: UIColor.darkGray, textColor: UIColor.white))
+        button.widthAnchor.constraint(equalToConstant: 130.0).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        button.layer.cornerRadius = 20
+//        button.addTarget(self, action: #selector(clearButtonWasPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private let buttonsStackView: UIStackView = {
+        let view = UIStackView()
+        return view
+    }()
+    
+    
 }
 

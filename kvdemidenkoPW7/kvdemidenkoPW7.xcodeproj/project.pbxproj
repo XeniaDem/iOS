@@ -13,6 +13,7 @@
 		18E3D97327A41F3A0049FFC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E3D97127A41F3A0049FFC4 /* Main.storyboard */; };
 		18E3D97527A41F3D0049FFC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E3D97427A41F3D0049FFC4 /* Assets.xcassets */; };
 		18E3D97827A41F3D0049FFC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E3D97627A41F3D0049FFC4 /* LaunchScreen.storyboard */; };
+		18E3D98227A420260049FFC4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3D98127A420260049FFC4 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		18E3D97427A41F3D0049FFC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E3D97727A41F3D0049FFC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E3D97927A41F3D0049FFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18E3D98127A420260049FFC4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		18E3D96A27A41F3A0049FFC4 /* kvdemidenkoPW7 */ = {
 			isa = PBXGroup;
 			children = (
+				18E3D98027A420130049FFC4 /* Views */,
 				18E3D97F27A41F430049FFC4 /* Controllers */,
 				18E3D96B27A41F3A0049FFC4 /* AppDelegate.swift */,
 				18E3D96D27A41F3A0049FFC4 /* SceneDelegate.swift */,
@@ -73,6 +76,14 @@
 				18E3D96F27A41F3A0049FFC4 /* ViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18E3D98027A420130049FFC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18E3D98127A420260049FFC4 /* CustomButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E3D98227A420260049FFC4 /* CustomButton.swift in Sources */,
 				18E3D97027A41F3A0049FFC4 /* ViewController.swift in Sources */,
 				18E3D96C27A41F3A0049FFC4 /* AppDelegate.swift in Sources */,
 				18E3D96E27A41F3A0049FFC4 /* SceneDelegate.swift in Sources */,
