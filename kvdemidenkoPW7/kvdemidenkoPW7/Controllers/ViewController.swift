@@ -18,7 +18,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.mapType = MKMapType.standard
         mapView.center = view.center
         view.addSubview(mapView)
-        
+        clearButton.isEnabled = false;
+        goButton.isEnabled = false;
         buttonsStackView.addArrangedSubview(goButton)
         buttonsStackView.addArrangedSubview(clearButton)
         view.addSubview(buttonsStackView)
@@ -38,7 +39,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         let press = UITapGestureRecognizer(target: self, action: #selector(keyboardPressedOutside))
         view.addGestureRecognizer(press)
-        
+
     }
     private let mapView: MKMapView = {
         let mapView = MKMapView()
@@ -60,7 +61,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         button.widthAnchor.constraint(equalToConstant: 130.0).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         button.layer.cornerRadius = 20
-//        button.addTarget(self, action: #selector(goButtonWasPressed), for: .touchUpInside)
+        button.setTitleColor(.gray, for: .disabled)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(goButtonWasPressed), for: .touchUpInside)
         return button
     }()
     
@@ -69,7 +72,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         button.widthAnchor.constraint(equalToConstant: 130.0).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         button.layer.cornerRadius = 20
-//        button.addTarget(self, action: #selector(clearButtonWasPressed), for: .touchUpInside)
+        button.setTitleColor(.gray, for: .disabled)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(clearButtonWasPressed), for: .touchUpInside)
         return button
     }()
     
@@ -119,15 +124,34 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     @objc func keyboardPressedOutside() {
            view.endEditing(true)
-       }
+    }
+    
+    @objc func clearButtonWasPressed(){
+        startLocation.text?.removeAll();
+        endLocation.text?.removeAll();
+        clearButton.setTitleColor(.gray, for: .disabled)
+        clearButton.backgroundColor = .lightGray
+        clearButton.isEnabled = false
+        goButton.isEnabled = false;
+    }
+    @objc func goButtonWasPressed(){
+       
+    }
 }
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           textField.resignFirstResponder()
-           return true
-       }
-       
-
+        textField.resignFirstResponder()
+        if(textField == endLocation && startLocation.hasText){
+            goButton.isEnabled = true
+            goButtonWasPressed()
+        }
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        if (textField.hasText) {
+            clearButton.isEnabled = true
+        }
+    }
 }
 
