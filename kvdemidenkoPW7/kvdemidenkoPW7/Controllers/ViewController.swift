@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-final class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +18,26 @@ final class ViewController: UIViewController, MKMapViewDelegate {
         mapView.mapType = MKMapType.standard
         mapView.center = view.center
         view.addSubview(mapView)
+        
         buttonsStackView.addArrangedSubview(goButton)
         buttonsStackView.addArrangedSubview(clearButton)
         view.addSubview(buttonsStackView)
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
-        configureUI();
+        
+        textStack.axis = .vertical
+        view.addSubview(textStack)
+        textStack.spacing = 10
+        textStack.pin(to: view, [.top: 50, .left: 10, .right: 10])
+        [startLocation, endLocation].forEach {
+            textField in
+            textField.setHeight(to: 40)
+            textField.delegate = self
+            textStack.addArrangedSubview(textField)
+        }
+        let press = UITapGestureRecognizer(target: self, action: #selector(keyboardPressedOutside))
+        view.addGestureRecognizer(press)
         
     }
     private let mapView: MKMapView = {
@@ -40,9 +53,6 @@ final class ViewController: UIViewController, MKMapViewDelegate {
         mapView.showsUserLocation = true
         return mapView
     }()
-    
-    private func configureUI() {
-    }
     
     
     private let goButton: CustomButton = {
@@ -68,6 +78,56 @@ final class ViewController: UIViewController, MKMapViewDelegate {
         return view
     }()
     
+    let startLocation: UITextField = {
+        let control = UITextField()
+        control.backgroundColor = UIColor.white
+        control.textColor = UIColor.darkGray
+        control.placeholder = "From"
+        control.layer.cornerRadius = 2
+        control.clipsToBounds = false
+        control.font = UIFont.systemFont(ofSize: 15)
+        control.borderStyle = UITextField.BorderStyle.roundedRect
+        control.autocorrectionType = UITextAutocorrectionType.yes
+        control.keyboardType = UIKeyboardType.default
+        control.returnKeyType = UIReturnKeyType.done
+        control.clearButtonMode = UITextField.ViewMode.whileEditing
+        control.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        return control
+    }()
     
+   let endLocation: UITextField = {
+        let control = UITextField()
+        control.backgroundColor = UIColor.white
+        control.textColor = UIColor.darkGray
+        control.placeholder = "To"
+        control.layer.cornerRadius = 2
+        control.clipsToBounds = false
+        control.font = UIFont.systemFont(ofSize: 15)
+        control.borderStyle = UITextField.BorderStyle.roundedRect
+        control.autocorrectionType = UITextAutocorrectionType.yes
+        control.keyboardType = UIKeyboardType.default
+        control.returnKeyType = UIReturnKeyType.done
+        control.clearButtonMode = UITextField.ViewMode.whileEditing
+        control.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        return control
+    }()
+    
+    let textStack: UIStackView = {
+        let view = UIStackView()
+        return view
+    }()
+    
+    @objc func keyboardPressedOutside() {
+           view.endEditing(true)
+       }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
+       
+
 }
 
