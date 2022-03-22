@@ -13,6 +13,7 @@
 		180A401D27EA347E0093DC29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180A401C27EA347E0093DC29 /* Assets.xcassets */; };
 		180A402027EA347E0093DC29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180A401E27EA347E0093DC29 /* LaunchScreen.storyboard */; };
 		180A402A27EA36250093DC29 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A402927EA36250093DC29 /* MovieViewCell.swift */; };
+		180A402D27EA3F630093DC29 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A402C27EA3F630093DC29 /* MovieModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		180A401F27EA347E0093DC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		180A402127EA347E0093DC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180A402927EA36250093DC29 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
+		180A402C27EA3F630093DC29 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		180A401227EA347B0093DC29 /* kvdemidenkoPW8 */ = {
 			isa = PBXGroup;
 			children = (
+				180A402B27EA3F4F0093DC29 /* Models */,
 				180A402827EA36120093DC29 /* Views */,
 				180A402727EA35030093DC29 /* Controllers */,
 				180A401327EA347B0093DC29 /* AppDelegate.swift */,
@@ -81,6 +84,14 @@
 				180A402927EA36250093DC29 /* MovieViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		180A402B27EA3F4F0093DC29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				180A402C27EA3F630093DC29 /* MovieModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			files = (
 				180A401827EA347B0093DC29 /* MovieViewController.swift in Sources */,
 				180A402A27EA36250093DC29 /* MovieViewCell.swift in Sources */,
+				180A402D27EA3F630093DC29 /* MovieModel.swift in Sources */,
 				180A401427EA347B0093DC29 /* AppDelegate.swift in Sources */,
 				180A401627EA347B0093DC29 /* SceneDelegate.swift in Sources */,
 			);
